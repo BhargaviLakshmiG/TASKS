@@ -1,0 +1,117 @@
+<html>
+<head>
+<style>
+
+
+
+body {
+  font: 400 16px helvetica,sans-serif;
+  color: #fff;
+  margin: 120px 90px 120px 90px;
+  padding: 0;
+  background: #fff;
+  border-radius: 10%;
+
+}
+
+header {
+  text-align: center;
+  padding: 40px 0 100px 0;
+  background: #8b777c;
+  font-style: oblique;
+  font-variant: small-caps;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* angled div */
+.slanted-div {
+  position: relative;
+  padding: 200px 0;
+  background: #003666;
+  overflow: visible;
+  z-index: 1;
+}
+
+
+.slanted-div:before, .slanted-div:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  transform-origin: right top;
+  transform: skewY(3.5deg);
+}
+
+
+
+
+.slanted-div div {
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+
+h1 {
+  font-size: 2em;
+  font-weight: 400;
+  margin: 0;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* responsive */
+@media only screen
+and (max-width : 720px) {
+  
+  header {
+    padding: 30px 30px 50px 30px;
+  }
+
+  .slanted-div {
+    padding: 100px 0;
+  }
+  
+  footer {
+    padding: 65px 0 50px 0;
+  }
+    
+  
+}
+
+
+</style>
+</head>
+<body>
+  <header>
+    <h1>SCROLLING IN WEB DESIGN <br>THE LONG AND SHORT OF IT</h1>
+  </header>
+  
+  <section class="slanted-div">
+    <div>
+      <h1><b>LONG SCROLL </b>:THE GOOD STUFF<br></h1>
+        VISUAL CREATIVITY
+    </div>
+  </section>
+  <section class="slanted-div" style="background-color: gold;">
+    <div><h1>
+     SLOWER LOAD TIMES
+    </h1>
+    </div>
+
+  </section>
+
+  <section class="slanted-div" style="background-color:darkturquoise;">
+    <div style="font-size: 30px; text-shadow: 4px 4px 3px #77f;"">
+      EASIER FOR USERS TO REALISE THEIR GOAL
+    </div>
+
+  </section>
+  
+  
+  
+</body>
+</html>
