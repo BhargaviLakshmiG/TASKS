@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DOM Random and Time Difference</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+   <div class="container-fluid">
+     <div class="row">
+        <div class="col-md-6 bg-primary">
+            Generate Random Number
+            <input type="button" value="Random" class="bg-warning" onclick="genRandom()">
+
+            <p id="rand" class="bg-success"></p>
+        </div>
+        <div class="col-md-6 bg-info">
+            Select Date of Birth 
+            <input type="date" value="datePrint" id="myDate" onchange="datePrint()">
+            <p id="da" class="bg-success"></p>
+        </div>
+     </div>
+ </div>
+
+ <script>
+
+  //Generate Random number
+  function genRandom(){
+  var str="";
+     var random=Math.floor(Math.random() * 10);
+  str+=random;
+   add();
+  function add(){
+    if(str.length<8){
+      random=Math.floor(Math.random()*10);
+      console.log(random)
+      if(str.indexOf(random)==-1)
+                str+=random;
+            add();
+      
+  }
+}
+
+   rand.innerHTML="Random number :"+(str);
+
+  }
+
+
+
+
+
+
+
+  //Printing Age
+
+  function datePrint(){
+
+    var givenDate=document.getElementById("myDate").value;
+     var sysDate=new Date();
+     
+     console.log("Sys Date :"+sysDate);
+     var oldDate=new Date(givenDate.substring(0,4),(givenDate.substring(5,7)-1),givenDate.substring(8,10)) 
+     console.log("Given Date :"+oldDate);
+
+    
+     var sysYears=sysDate.getFullYear();
+     var oldYears=oldDate.getFullYear();
+     var yearDiff=sysYears-oldYears;
+     console.log(yearDiff) 
+
+
+     var sysMonth=sysDate.getMonth();
+     var oldMonth=oldDate.getMonth();
+     if (sysMonth >= oldMonth)
+       var monthDiff = sysMonth - oldMonth;
+     else {
+         yearDiff--;
+        var monthDiff = (12 + sysMonth) -oldMonth;
+       }   
+       
+     
+     var sysD=sysDate.getDate();
+     var oldD=oldDate.getDate();
+
+
+       
+     if (sysD >= oldD)
+    var dayDiff = sysD - oldD;
+     else {
+       monthDiff--;
+    var dayDiff = (31 + sysD) - oldD;
+
+    if (monthDiff < 0) {
+        monthDiff = 11;
+      yearDiff--;
+      }
+    }
+
+    var hrsDiff=sysDate.getHours()-oldDate.getHours();
+    var minDiff=sysDate.getMinutes()-oldDate.getMinutes();
+    var secDiff=sysDate.getSeconds()-oldDate.getSeconds();
+    var msDiff=sysDate.getMilliseconds()-oldDate.getMilliseconds();
+       
+      var txt="Age is : "+yearDiff+"years "+monthDiff+"months "+dayDiff+"days "+hrsDiff+"hrs "+minDiff+"minutes "+secDiff+"secs "+msDiff+"millisecs ";
+           da.innerHTML = txt;
+  }
+
+ </script>
+  
+
+</body>
+</html>
