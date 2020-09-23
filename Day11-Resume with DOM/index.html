@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" >
+    <style>
+
+.head {
+    position: relative;
+    margin: auto;
+    width: 80%;
+}
+
+
+.name {
+    position: relative;
+    margin-left: 360px  ;
+    padding: 1px;
+    text-align: center;
+    width: 25%;
+    height: 25%;
+    background-color:cadetblue;
+    font-weight: bold;
+}
+
+
+.banner {
+    height: 45%;
+    background-color: cadetblue;
+    
+}
+
+.contact {
+    text-align: center;
+    font-size: large;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+    color: rgb(83, 36, 36);
+    font-weight:bold
+}
+
+.details {
+    column-count: 2;
+    column-rule: 1px solid rgb(84, 142, 168);
+}
+
+progress {
+    position: absolute;
+    width: 20%;
+    left: 20%;
+}
+
+h4 {
+    position: relative;
+    left: 20px;
+}
+    </style>
+</head>
+
+<body>
+    <script>
+var head = create('div', 'head')
+var ban = create('div', "banner")
+var namediv = create('div', "name");
+
+var nameh = create('h2')
+nameh.innerHTML = "BHARGAVI LAKSHMI"
+
+var cnt = create('div', 'contact');
+var hr = create('hr');
+var details = create('div', "details");
+var pcntct = create('p');
+pcntct.innerHTML = "bhargavi.g505@gmail.com|78240-84471"
+
+var obj = create('h2');
+obj.innerHTML = `Carrer Obective`
+
+var objText = create('p');
+objText.innerHTML = "Following a return to the job market,I am now looking to secure a challenging and rewarding new role where  I can put previous experience gained to best use.I love to face challenging situations and have passion to work on stretched zone to extend the learning curve"
+
+var tech = create('h2');
+tech.innerHTML = `Technical Skills`;
+
+var skill = create('ul', 'skills');
+var skilllist = listCr(skill, 5);
+
+var jsl = createLabel('js', 'Java Script');
+var jspr = createProgress(80, 'JS');
+var htmll = createLabel('html', 'HTML');
+var htmlpr = createProgress(65, 'html');
+var cssl = createLabel('css', "CSS");
+var csspr = createProgress(50, 'css');
+var javal=createLabel('java','JAVA')
+var javapr = createProgress(60, 'java');
+var sqll = createLabel('sql', "SQL");
+var sqlpr = createProgress(55, 'sql');
+
+skilllist[0].append(jsl, jspr);
+skilllist[1].append(htmll, htmlpr);
+skilllist[2].append(cssl, csspr);
+skilllist[3].append(javal, javapr);
+skilllist[4].append(sqll, sqlpr);
+
+
+var workh = create('h2');
+workh.innerHTML = `Work Experience`;
+
+var role = create('h4');
+role.innerHTML = `Application Developer ,IBM India Pvt.Ltd (2006-2011)`;
+
+var workinfo = create('ul');
+var worklist = listCr(workinfo, 2);
+worklist[0].innerHTML = "Worked in IBM as application developer for 5 years."
+worklist[1].innerHTML = "Involoved in analysis ,design,coding and testing of functional requirements"
+
+var projh = create('h2');
+projh.innerHTML = `Project Information`;
+
+var hp1 = create('h4');
+hp1.innerHTML = `Blue Cross Blue Shield Tennesse(2006-2008)`;
+
+var prj1=create('p');
+prj1.innerHTML="The Healthcare Collaboration Management contains a set of On Demand Applications to  automate the transactions between providers and payers. The application includes   Claims Filing & Response (CFNR) and Claims Status (CS)."
+
+var hp2 = create('h4');
+hp2.innerHTML = `Partner Commerce Servers(2009-2011)`;
+
+var prj2=create('p');
+prj2.innerHTML="This application enables users to carry out vital e-business transactions with IBM over the Internet This secure Internet web site provides complete business-to-business e-commerce between IBM Business Partners."
+
+
+var eq = create('h2');
+eq.innerHTML = `Education Qualification`;
+
+var ed = create('ul');
+var edl = listCr(ed, 2);
+edl[0].innerHTML = `Bachelor of Technology in Computer Science and Engineering with 78% .`
+edl[1].innerHTML = `Intermediate with 94.8% from Andhra Pradesh Board .`;
+
+
+
+
+document.body.append(head);
+head.append(ban, cnt, hr, details);
+ban.append(namediv);
+namediv.appendChild(nameh);
+cnt.append(pcntct);
+details.append(obj, objText, tech, skill, workh, role, workinfo);
+details.append(projh, hp1, prj1, hp2, prj2, eq, ed);
+
+
+
+
+function create(element, classn) {
+    var e = document.createElement(element);
+    if (classn)
+        e.setAttribute('class', classn);
+
+    return e;
+}
+
+
+
+function listCr(el, num) {
+    var a = []
+    for (let i = 0; i < num; i++) {
+        a.push(document.createElement('li'));
+        el.appendChild(a[i]);
+    }
+    return a;
+}
+
+function createLabel(namefor, text) {
+    var l = document.createElement('label');
+    l.setAttribute('for', namefor);
+    l.innerHTML = text;
+    return l;
+}
+
+function createProgress(val, idname) {
+    var pr = document.createElement('progress');
+    pr.id = idname;
+    pr.setAttribute('value', val);
+    pr.setAttribute('class', 'pbar');
+    pr.setAttribute('max', 100);
+    return pr;
+}
+
+
+
+
+</script>
+</body>
+
+</html>
