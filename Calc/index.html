@@ -1,0 +1,261 @@
+<html>
+<head>
+    <title>
+        Calculator with DOM
+    </title>
+<style>
+
+input[type=button]{
+
+    background-color:darkgray
+    color:coral;
+    width:50px;
+    height:40px;
+    
+}
+
+#tab{
+margin:  50px 200px 50px 100px;
+width: 220px;
+height: 200px;
+
+}
+
+#result{
+ width: 200px;
+ height: 30px;
+ text-align: right;
+}
+
+</style>
+
+
+</head>
+<body>
+    <script>
+   var whole=document.createElement("div");
+    whole.setAttribute("id","myCalcTable");
+    
+    document.body.append(whole);
+
+    console.log(document.getElementById("myCalcTable"))
+    
+  var myTableDiv = document.getElementById("myCalcTable");
+
+  
+
+  var table = document.createElement('TABLE');
+  table.setAttribute("id","tab");
+  table.border = '1';
+
+  var tableBody = document.createElement('TBODY');
+  table.appendChild(tableBody);
+
+  //row1
+    var tr = document.createElement('TR');
+    tableBody.appendChild(tr);
+
+    var td=document.createElement("td");
+    var res = document.createElement("input");
+    res.setAttribute("type", "text");
+    res.setAttribute("id","result");
+    //res.setAttribute("value",
+    td.appendChild(res);
+    tr.appendChild(td);
+
+
+
+     //row 2 
+      var tr=document.createElement("tr");
+        tableBody.appendChild(tr);
+
+       var td=document.createElement("td");
+      
+        var one=document.createElement("input");
+        one.setAttribute("type", "button");
+        one.setAttribute("id","num");
+        one.setAttribute("value","1");
+        one.setAttribute("onClick","dis(1)")
+        td.append(one);
+
+        
+        var two=document.createElement("input");
+        two.setAttribute("type", "button");
+        two.setAttribute("value","2");
+        two.setAttribute("onClick","dis(2)")
+        td.append(two);
+        
+        var three=document.createElement("input");
+        three.setAttribute("type", "button");
+        three.setAttribute("value","3");
+        three.setAttribute("onClick","dis(3)")
+        td.append(three);
+        
+
+        var plus=document.createElement("input");
+        plus.setAttribute("type", "button");
+        plus.setAttribute("value","+");
+        plus.setAttribute("onClick","dis('+')")
+        td.append(plus);
+       
+        
+       
+        tr.append(td);
+
+        
+  
+        //row 3
+        var tr=document.createElement("tr");
+        tableBody.appendChild(tr);
+
+       var td=document.createElement("td");
+      
+        var four=document.createElement("input");
+        four.setAttribute("type", "button");
+        four.setAttribute("value","4");
+        four.setAttribute("onClick","dis(4)")
+        td.append(four);
+       
+        
+        var five=document.createElement("input");
+        five.setAttribute("type", "button");
+        five.setAttribute("value","5");
+        five.setAttribute("onClick","dis(5)")
+        td.append(five);
+        
+        var six=document.createElement("input");
+        six.setAttribute("type", "button");
+        six.setAttribute("value","6");
+        six.setAttribute("onClick","dis(6)")
+        td.append(six);
+
+        var minus=document.createElement("input");
+        minus.setAttribute("type", "button");
+        minus.setAttribute("value","-");
+        minus.setAttribute("onClick","dis('-')")
+        td.append(minus);
+        
+
+       
+        tr.append(td);
+
+        
+
+
+
+        //row 4
+        var tr=document.createElement("tr");
+        tableBody.appendChild(tr);
+
+       var td=document.createElement("td");
+      
+        var seven=document.createElement("input");
+        seven.setAttribute("type", "button");
+        seven.setAttribute("value","7");
+        seven.setAttribute("onClick","dis(7)")
+        td.append(seven);
+       
+        
+        var eight=document.createElement("input");
+        eight.setAttribute("type", "button");
+        eight.setAttribute("value","8");
+        eight.setAttribute("onClick","dis(8)")
+        td.append(eight);
+        
+        var nine=document.createElement("input");
+        nine.setAttribute("type", "button");
+        nine.setAttribute("value","9");
+        nine.setAttribute("onClick","dis(9)")
+        td.append(nine);
+
+        var mul=document.createElement("input");
+        mul.setAttribute("type", "button");
+        mul.setAttribute("value","*");
+        mul.setAttribute("onClick","dis('*')")
+        td.append(mul);
+       
+        
+
+       
+
+       
+          tr.append(td)
+
+        //row 5
+        var tr=document.createElement("tr");
+        tableBody.appendChild(tr);
+
+        var td=document.createElement("td");
+      
+        var z=document.createElement("input");
+        z.setAttribute("type", "button");
+        z.setAttribute("value","0");
+        z.setAttribute("onClick","dis(0)")
+        td.append(z);
+
+        var eq=document.createElement("input");
+        eq.setAttribute("type", "button");
+        eq.setAttribute("value","=");
+        eq.setAttribute("id","equal")
+        eq.setAttribute("onClick","solve()")
+        td.append(eq);
+       
+
+        var cl=document.createElement("input");
+        cl.setAttribute("type", "button");
+        cl.setAttribute("value","C");
+        cl.setAttribute("onClick","clr()")
+        td.append(cl);
+
+        
+        
+        var div=document.createElement("input");
+        div.setAttribute("type", "button");
+        div.setAttribute("value","/");
+        div.setAttribute("onClick","dis('/')")
+        td.append(div);
+
+        tr.append(td);
+
+        
+
+         
+  myTableDiv.appendChild(table);
+
+   document.body.append(myTableDiv)  
+   
+   
+  
+
+
+  function dis(val) 
+         { 
+             
+             document.getElementById("result").value +=val ;
+                         
+         } 
+
+         function clr() 
+         { 
+             console.log("Clear")
+             document.getElementById("result").value = "" 
+         } 
+
+   
+        
+    
+         function solve() 
+         { 
+             let x = document.getElementById("result").value 
+             let y = eval(x) 
+             document.getElementById("result").value = y ;
+         } 
+           
+    
+    
+
+
+</script>
+</body>
+
+</html>
