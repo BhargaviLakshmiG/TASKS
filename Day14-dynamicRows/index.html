@@ -1,0 +1,174 @@
+<html>
+  <head>
+    <title>
+      Another DOM data add
+    </title>
+    <style>
+    
+     #myForm{
+        background-color: gainsboro;
+        width: 100%;
+        height: 100%;
+      }
+      #maindiv{
+        align-content: center;
+        text-align: center;
+      }
+      h1{
+         color:indigo;
+        text-align: center;
+      }
+      label{
+        font-size: 24px;
+        padding:12px;
+
+      }
+      input{
+        position: absolute;
+        margin-left: 150px;
+        max-width: 100%;
+      }
+
+    #sub{
+      background-color:cornflowerblue;
+      margin-left: 250px;
+      margin-top: 40px;
+    }
+
+    
+  table{
+     margin-top: 50px;
+     border: 1px solid black;
+     width: 100%
+
+  }
+  td{
+    text-align: center;
+  }
+
+  div{
+    margin-left: 50px;
+  }
+
+  @media only screen and (max-width: 360px) {
+    input{
+      max-width: 100%;
+    }
+    
+  }
+
+    </style>
+  </head>
+<body>
+  <script>
+    var wrap=document.createElement("form");
+    wrap.setAttribute("id","myForm");
+    var h1=document.createElement("h1");
+    h1.innerHTML="ENTER BELOW DETAILS"
+   
+
+    var nameLab=document.createElement("label");
+    nameLab.innerHTML="Enter Student Name "
+    var namediv=document.createElement("div");
+    namediv.setAttribute("class","ipdiv");
+    var nameip=document.createElement("input");
+    nameip.setAttribute("type","text");
+    nameip.setAttribute("id","nameIp");
+    nameip.setAttribute("placeholder","enter name")
+    namediv.append(nameip)
+     var b=document.createElement("br")
+
+    var ageLabel=document.createElement("label");
+    ageLabel.setAttribute("id","ageLabel");
+    ageLabel.innerHTML="Enter Student Age"
+    var agediv=document.createElement("div");
+    agediv.setAttribute("class","ipdiv");
+    var ageip=document.createElement("input");
+    ageip.setAttribute("type","number");
+    ageip.setAttribute("id","ageIp");
+    ageip.setAttribute("placeholder","enter age")
+    agediv.append(ageip)
+
+    var b1=document.createElement("br")
+
+    var schoolLabel=document.createElement("label");
+    schoolLabel.setAttribute("id","schLabel");
+    schoolLabel.innerHTML="Enter School Name "
+    var schdiv=document.createElement("div");
+    schdiv.setAttribute("class","ipdiv");
+    var schip=document.createElement("input");
+    schip.setAttribute("type","text");
+    schip.setAttribute("id","schIp");
+    schip.setAttribute("placeholder","enter school")
+    schdiv.append(schip)
+
+    var b2=document.createElement("br");
+    var but=document.createElement("input");
+    but.setAttribute("type","button")
+    but.setAttribute("id","sub")
+    but.setAttribute("value","Submit")
+    var b3=document.createElement("br")
+
+    wrap.append(h1,nameLab,namediv,b,ageLabel,agediv,b1,schoolLabel,schdiv,b2,but,b3);
+
+    var table= document.createElement("table");
+          table.setAttribute("id","t");
+          table.border=1
+
+     var thr=document.createElement("tr");     
+    var tabh1=document.createElement("th");
+    var tabh2=document.createElement("th");
+    var tabh3=document.createElement("th");
+    tabh1.innerHTML="NAME";
+    tabh2.innerHTML="AGE";
+    tabh3.innerHTML="SCHOOL"
+   
+    thr.append(tabh1,tabh2,tabh3)
+    table.append(thr);
+
+
+
+      
+    document.body.append(wrap);
+
+    document.getElementById("sub").addEventListener('click',addData)
+
+   // document.body.append(table)
+  
+    function addData(){
+       
+
+      if(document.getElementById("nameIp").value==""){
+              alert("Please enter name")
+              
+      }
+     else if(document.getElementById("ageIp").value==""){
+              alert("Please enter age")
+                   }
+    else if(document.getElementById("schIp").value==""){
+              alert("Please enter school")
+                   }
+    else{ 
+      var row=table.insertRow(0);
+      var cell0=row.insertCell(0);
+      var cell1=row.insertCell(1);
+      var cell2=row.insertCell(2);
+      cell0.innerHTML=document.getElementById("nameIp").value;
+      cell1.innerHTML=document.getElementById("ageIp").value;
+      cell2.innerHTML=document.getElementById("schIp").value;
+         row.append(cell0,cell1,cell2);       
+       table.appendChild(row);
+       document.body.appendChild(table);
+       console.log("Added row")
+        console.log(table)
+       
+        // print.innerHTML=table;
+         wrap.append(table)
+        }
+
+    }
+
+  </script>
+</body>
+
+</html>
