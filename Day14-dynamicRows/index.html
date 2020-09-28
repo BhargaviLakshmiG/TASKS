@@ -1,7 +1,8 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-      Another DOM data add
+      ADD dynamic table data
     </title>
     <style>
     
@@ -21,11 +22,15 @@
       label{
         font-size: 24px;
         padding:12px;
-
       }
-      input{
-        position: absolute;
-        margin-left: 150px;
+
+      input[type="number"]{
+        margin-left: 50px;
+        max-width: 100%;
+      }
+
+      input[type="text"]{
+        margin-left: 45px;
         max-width: 100%;
       }
 
@@ -33,6 +38,7 @@
       background-color:cornflowerblue;
       margin-left: 250px;
       margin-top: 40px;
+      max-width: 100%;
     }
 
     
@@ -50,7 +56,7 @@
     margin-left: 50px;
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: 480px) {
     input{
       max-width: 100%;
     }
@@ -64,52 +70,52 @@
     var wrap=document.createElement("form");
     wrap.setAttribute("id","myForm");
     var h1=document.createElement("h1");
-    h1.innerHTML="ENTER BELOW DETAILS"
+    h1.innerHTML="ENTER BELOW DETAILS";
    
 
     var nameLab=document.createElement("label");
-    nameLab.innerHTML="Enter Student Name "
-    var namediv=document.createElement("div");
-    namediv.setAttribute("class","ipdiv");
+    nameLab.innerHTML="Enter Student Name: "
+    //var namediv=document.createElement("div");
+    //namediv.setAttribute("class","ipdiv");
     var nameip=document.createElement("input");
     nameip.setAttribute("type","text");
     nameip.setAttribute("id","nameIp");
     nameip.setAttribute("placeholder","enter name")
-    namediv.append(nameip)
+   // namediv.append(nameip)
      var b=document.createElement("br")
 
     var ageLabel=document.createElement("label");
     ageLabel.setAttribute("id","ageLabel");
-    ageLabel.innerHTML="Enter Student Age"
-    var agediv=document.createElement("div");
-    agediv.setAttribute("class","ipdiv");
+    ageLabel.innerHTML="Enter Student's  Age  :"
+    //var agediv=document.createElement("div");
+    //agediv.setAttribute("class","ipdiv");
     var ageip=document.createElement("input");
     ageip.setAttribute("type","number");
     ageip.setAttribute("id","ageIp");
     ageip.setAttribute("placeholder","enter age")
-    agediv.append(ageip)
+   // agediv.append(ageip)
 
     var b1=document.createElement("br")
 
     var schoolLabel=document.createElement("label");
     schoolLabel.setAttribute("id","schLabel");
-    schoolLabel.innerHTML="Enter School Name "
-    var schdiv=document.createElement("div");
-    schdiv.setAttribute("class","ipdiv");
+    schoolLabel.innerHTML="Enter  School  Name : "
+    //var schdiv=document.createElement("div");
+    //schdiv.setAttribute("class","ipdiv");
     var schip=document.createElement("input");
     schip.setAttribute("type","text");
     schip.setAttribute("id","schIp");
     schip.setAttribute("placeholder","enter school")
-    schdiv.append(schip)
+    //schdiv.append(schip)
 
     var b2=document.createElement("br");
     var but=document.createElement("input");
     but.setAttribute("type","button")
     but.setAttribute("id","sub")
-    but.setAttribute("value","Submit")
+    but.setAttribute("value","ADD ")
     var b3=document.createElement("br")
 
-    wrap.append(h1,nameLab,namediv,b,ageLabel,agediv,b1,schoolLabel,schdiv,b2,but,b3);
+    wrap.append(h1,nameLab,nameip,b,ageLabel,ageip,b1,schoolLabel,schip,b2,but,b3);
 
     var table= document.createElement("table");
           table.setAttribute("id","t");
