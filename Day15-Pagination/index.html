@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+h2{
+    font-size: 28px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+th,td {
+   
+    vertical-align: center;
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid black;
+      
+}
+
+th {
+    font-size: 22px;
+  }
+
+.tabData {
+    margin: auto;
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+thead tr {
+    background:cornsilk;
+ 
+}
+
+div a {
+    color: black;
+    float: left;
+    padding: 6px 16px;
+        
+  }
+
+ 
+  div a:hover
+  {
+      background-color:gray
+  }
+  div a:active{
+      background-color: blue;
+  }
+
+
+</style>
+</head>
+<body>
+<script>
+
+var h=document.createElement("h2");
+h.innerHTML="Pagination with JSON";
+document.body.append(h);
+
+var tabdiv = document.createElement("div");
+tabdiv.setAttribute("class","tData");
+
+
+var init_page = 0;
+var tot_rec=100;
+var max_pages = 10;
+var rec_perpage=10;
+
+
+function createTab(start, end) {   
+    var request = new XMLHttpRequest();
+    var url = "https://raw.githubusercontent.com/Rajavasanthan/jsondata/master/pagenation.json";
+    request.open('GET', url, true);
+    request.send();
+
+       request.onload = function() {
+        var data = JSON.parse(this.response);
+        tabdiv.innerHTML = " ";
+        var table = document.createElement("table");
+        table.setAttribute("class", "tabData");
+        table.setAttribute("id","table_data")
+
+        var th = document.createElement("thead");
+        var td = document.createElement("tbody");
+
+        var trh = document.createElement("tr");
+        var th1 = document.createElement("th");
+        th1.innerHTML = "ID";
+        var th2 = document.createElement("th");
+        th2.innerHTML = "NAME";
+        var th3 = document.createElement("th");
+        th3.innerHTML = "E-Mail";
+
+        tabdiv.append(table);
+        table.append(th, td);
+        th.append(trh);
+        trh.append(th1, th2, th3);
+
+        for (var i = start; i < end; i++) {
+            let tr = document.createElement("tr");
+            let td_id = document.createElement("td");
+            td_id.innerHTML = data[i]["id"];
+            let td_name = document.createElement("td");
+            td_name.innerHTML = data[i]["name"];
+            let td_mail = document.createElement("td");
+            td_mail.innerHTML = data[i]["email"];
+
+            tr.append(td_id, td_name, td_mail);
+            td.append(tr);
+        }
+      // tabdiv.append(td);
+    }
+
+document.body.append(tabdiv)
+
+}
+
+
+
+//Create Pagination
+
+var pag=document.createElement("div");
+pag.setAttribute("class","pagi");
+
+var pindex=createA("a","href","&laquo");
+pindex.setAttribute("href","javascript:prevPage()");
+var in1=createA("a","href","1");
+in1.setAttribute("href","javascript:changePage(1)")
+var in2=createA("a","href","2");
+in2.setAttribute("href","javascript:changePage(2)")
+var in3=createA("a","href","3");
+in3.setAttribute("href","javascript:changePage(3)")
+var in4=createA("a","href","4");
+in4.setAttribute("href","javascript:changePage(4)")
+var in5=createA("a","href","5");
+in5.setAttribute("href","javascript:changePage(5)")
+var in6=createA("a","href","6");
+in6.setAttribute("href","javascript:changePage(6)")
+var in7=createA("a","href","7");
+in7.setAttribute("href","javascript:changePage(7)")
+var in8=createA("a","href","8");
+in8.setAttribute("href","javascript:changePage(8)")
+var in9=createA("a","href","9");
+in9.setAttribute("href","javascript:changePage(9)")
+var in10=createA("a","href","10");
+in10.setAttribute("href","javascript:changePage(10)")
+var lindex=createA("a","href","&raquo");
+lindex.setAttribute("href","javascript:nextPage()");
+
+
+
+function createA(tag,h,val){
+var lar=document.createElement(tag);
+//lar.setAttribute(h,"#");
+lar.innerHTML=val;
+pag.append(lar);
+return lar;
+}
+
+
+function prevPage() {
+    console.log(init_page,cur_page)
+    if (cur_page > 1) {
+        changePage(cur_page - 1)
+    }
+}
+
+function nextPage() {
+    console.log("here")
+    if (cur_page < max_pages) {
+        changePage(cur_page + 1)
+    }
+}
+
+
+
+function changePage(num) {
+    if (num < 1) 
+       num = 1;
+    if (num > max_pages) 
+       num = max_pages;
+
+    var start = (num - 1) * max_pages;
+    var end = (num) * max_pages;
+
+    cur_page = num;
+    createTab(start, end);
+
+      document.body.append(pag)
+}
+
+changePage(1);
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
