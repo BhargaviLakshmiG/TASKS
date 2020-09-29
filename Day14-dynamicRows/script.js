@@ -3,7 +3,7 @@
 var cont=document.createElement("div");
 cont.setAttribute("class","container");
 var h=document.createElement("h2");
-h.innerHTML="PERSON DETAILS FORM";
+h.innerHTML="PERSONAL DETAILS FORM";
 cont.append(h);
 
 var f=document.createElement("form");
