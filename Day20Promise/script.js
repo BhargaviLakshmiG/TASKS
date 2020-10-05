@@ -1,7 +1,7 @@
 
-var con=createSub("div","row");
+var con=createDiv("div","row");
 
- function createSub(d,cl){
+ function createDiv(d,cl){
    var sub=document.createElement(d);
    sub.setAttribute("class",cl);
    return sub;
@@ -17,7 +17,7 @@ var prom = new Promise(function (resolve, reject) {
     xhr.onload = function() {
         console.log(xhr);
         var data=JSON.parse(this.response);
-           if (this.status>=200 && this.status<400) {
+           if (this.status==200) {
                 //console.log(data)
                 resolve(data);
             }
@@ -31,38 +31,34 @@ var prom = new Promise(function (resolve, reject) {
 prom.then(function(data) {
     // success
     console.log("success");
-    var curar=[];
-      
-     for(var i in data){
-        let str=" "
-        var cap=createSub("div","col-sm-4");
-        var capcard=createSub("div","card text-black bg-success mb-4");
-        var capbody=createSub("div","card-body");
-        var caphead=createSub("h4","card-title");
-        caphead.innerHTML=data[i].name;
-        var captxt=createSub("p");
-        //captxt.setAttribute("id","capital")
-              
-       capbody.append(caphead,captxt);
-       capcard.appendChild(capbody);
-       cap.appendChild(capcard);
-       con.appendChild(cap);
-       let el_f=document.createElement("a");
-       el_f.href=data[i].flag;
-       el_f.innerHTML=data[i].flag;
-       var curr=data[i].currencies[0].code+" "+data[i].currencies[0].name+" "+data[i].currencies[0].symbol;
-        str="Capital: "+data[i].capital+"<br/>"+"Region: "+data[i].region+'<br/>'+"LatLng: "+data[i].latlng+'<br/>'+" Currency: "+curr+"<br/>"+"Flag: ";
+        for(var i in data){
+        var str="";
+       var card=createDiv("div"," col-lg-4 col-sm-12");
+       var capcard=createDiv("div","card text-black bg-success mb-4");
+       var cardbody=createDiv("div","card-body");
+       var cardhead=createDiv("h4","card-title");
+       var cardimg=createDiv("img","class-img-top");
+       cardimg.setAttribute("src",data[i].flag);
+       cardhead.innerHTML=data[i].name;
+       var cardtxt=createDiv("p");
+       var curr_info=data[i].currencies[0].code+" "+data[i].currencies[0].name+" "+data[i].currencies[0].symbol;
+       str=`Capital: ${data[i].capital}<br/>Region: ${data[i].region}<br/>LatLng: ${data[i].latlng}<br/> Currency: ${curr_info}<br/>` ;
+      cardtxt.innerHTML=str;
+         
+     
+      cardbody.append(cardhead,cardimg,cardtxt);
+      capcard.appendChild(cardbody);
+      card.appendChild(capcard);
+      con.appendChild(card);
+     
         
-        
-       
-       captxt.innerHTML=str;
-       captxt.appendChild(el_f);
-          }
+      }  
+
           console.log(str)
     })
 .catch(function(x) {
     //false
-    console.log(x.statusText);
+    console.log(x);
    });
 
 
