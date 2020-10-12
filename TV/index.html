@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>TV Player</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <style>
+
+#screen{
+ margin-top: 100px;
+ }    
+
+p{
+  font-style: oblique;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: larger;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-9" id="screen">
+         <!-- <img src="tv.png" width="80%" height="90%" class="tvimg image-fluid"  id="tv"> -->
+          <video id="video">
+            <source id="videoPlayer" src="" type="video/mp4" />
+          </video>
+        </div>
+        <div class="col-3">
+          <img src="remote.jpg"  alt="remote image"  class="img-fluid"  usemap="#remoteMap" />
+          <map name="remoteMap">       
+            <area id="vol_up" shape="circle" coords="62,229,14" href="#" />
+            <area id="vol_down" shape="circle" coords="62,260,10" href="#" />
+            <area id="chn_up" shape="circle" coords="100,227,13" href="#" />
+            <area id="chn_down" shape="circle" coords="100,258,10" href="#" />
+            <area id="reset" shape="circle" coords="107,63,12" href="#" />  <!--Power button works as reset button-->
+          </map>
+        </div>
+      </div>
+      <div class="row">
+        <p id="text_dis">
+        </p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
