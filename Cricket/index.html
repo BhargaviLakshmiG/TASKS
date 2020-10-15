@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CRICKET GAME</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <style>
+     h4{
+         text-align: center;
+     }
+      .col-4{
+          text-align: center;
+          font-weight: bold;
+      }
+      button{
+          background-color:cornflowerblue
+      }
+      .row{
+          text-align: center;
+      }
+ </style>
+</head>
+<body>
+
+<div class="container-fluis">
+  <h4>CRICKET 10</h4>
+  <hr>
+  <div class="row">
+    <div class="col-4">TEAM 1 SCORE
+        <p id="score_t1">0</p>
+        <button id="hit1" onclick="check()"> HIT 1</button>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">TEAM 2 SCORE
+            <p id="score_t2">0</p>
+            <button id="hit2" disabled="true"> HIT 2</button>
+        </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+      <div class="col-5">TEAM 1 SCORE BOARD
+        <table class="table table-bordered">
+         <thead>
+            <tr>
+               <td>TEAM 1</td>
+               <td>B1</td>
+               <td>B2</td>
+               <td>B3</td>
+               <td>B4</td>
+               <td>B5</td>
+               <td>B6</td>
+               <td>TOTAL</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="p1t1">PLAYER 1</td>
+                <td id="p1t1b1"></td>
+                <td id="p1t1b2"></td>
+                <td id="p1t1b3"></td>
+                <td id="p1t1b4"></td>
+                <td id="p1t1b5"></td>
+                <td id="p1t1b6"></td>
+                <td id="p1t1score"></td>
+            </tr>
+            <tr>
+                <td id="p2t1">PLAYER 2</td>
+                <td id="p2t1b1"></td>
+                <td id="p2t1b2"></td>
+                <td id="p2t1b3"></td>
+                <td id="p2t1b4"></td>
+                <td id="p2t1b5"></td>
+                <td id="p2t1b6"></td>
+                <td id="p2t1score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 3</td>
+                <td id="p3t1b1"></td>
+                <td id="p3t1b2"></td>
+                <td id="p3t1b3"></td>
+                <td id="p3t1b4"></td>
+                <td id="p3t1b5"></td>
+                <td id="p3t1b6"></td>
+                <td id="p3t1score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 4</td>
+                <td id="p4t1b1"></td>
+                <td id="p4t1b2"></td>
+                <td id="p4t1b3"></td>
+                <td id="p4t1b4"></td>
+                <td id="p4t1b5"></td>
+                <td id="p4t1b6"></td>
+                <td id="p4t1score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 5</td>
+                <td id="p5t1b1"></td>
+                <td id="p5t1b2"></td>
+                <td id="p5t1b3"></td>
+                <td id="p5t1b4"></td>
+                <td id="p5t1b5"></td>
+                <td id="p5t1b6"></td>
+                <td id="p5t1score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 6</td>
+                <td id="p6t1b1"></td>
+                <td id="p6t1b2"></td>
+                <td id="p6t1b3"></td>
+                <td id="p6t1b4"></td>
+                <td id="p6t1b5"></td>
+                <td id="p6t1b6"></td>
+                <td id="p6t1score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 7</td>
+                <td id="p7t1b1"></td>
+                <td id="p7t1b2"></td>
+                <td id="p7t1b3"></td>
+                <td id="p7t1b4"></td>
+                <td id="p7t1b5"></td>
+                <td id="p7t1b6"></td>
+                <td id="p7t1score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 8</td>
+                <td id="p8t1b1"></td>
+                <td id="p8t1b2"></td>
+                <td id="p8t1b3"></td>
+                <td id="p8t1b4"></td>
+                <td id="p8t1b5"></td>
+                <td id="p8t1b6"></td>
+                <td id="p8t1score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 9</td>
+                <td id="p9t1b1"></td>
+                <td id="p9t1b2"></td>
+                <td id="p9t1b3"></td>
+                <td id="p9t1b4"></td>
+                <td id="p9t1b5"></td>
+                <td id="p9t1b6"></td>
+                <td id="p9t1score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 10</td>
+                <td id="p10t1b1"></td>
+                <td id="p10t1b2"></td>
+                <td id="p10t1b3"></td>
+                <td id="p10t1b4"></td>
+                <td id="p10t1b5"></td>
+                <td id="p10t1b6"></td>
+                <td id="p10t1score"></td>
+            </tr>
+        </tbody>
+        </table>
+      </div>
+      <div class="col-2"><button id="gen_result" disabled="true">Generate Result</button>
+        <b> <p id="match_won">  </p> <hr>
+    <p id="mom">
+         </p> </b>
+    </div>
+      <div class="col-5">TEAM 2 SCORE BOARD
+        <table class="table table-bordered">
+            <thead>
+               <tr>
+                  <td>TEAM 1</td>
+                  <td>B1</td>
+                  <td>B2</td>
+                  <td>B3</td>
+                  <td>B4</td>
+                  <td>B5</td>
+                  <td>B6</td>
+                  <td>TOTAL</td>
+               </tr>
+           </thead>
+           <tbody>
+               <tr>
+                 <td>PLAYER 1</td>
+                 <td id="p1t2b1"></td>
+                 <td id="p1t2b2"></td>
+                 <td id="p1t2b3"></td>
+                 <td id="p1t2b4"></td>
+                 <td id="p1t2b5"></td>
+                 <td id="p1t2b6"></td>
+                 <td id="p1t2score"></td>
+               </tr>
+               <tr>
+                <td>PLAYER 2</td>
+                 <td id="p2t2b1"></td>
+                 <td id="p2t2b2"></td>
+                 <td id="p2t2b3"></td>
+                 <td id="p2t2b4"></td>
+                 <td id="p2t2b5"></td>
+                 <td id="p2t2b6"></td>
+                 <td id="p2t2score"></td>
+               </tr>
+               <tr>
+                <td>PLAYER 3</td>
+                 <td id="p3t2b1"></td>
+                 <td id="p3t2b2"></td>
+                 <td id="p3t2b3"></td>
+                 <td id="p3t2b4"></td>
+                 <td id="p3t2b5"></td>
+                 <td id="p3t2b6"></td>
+                 <td id="p3t2score"></td>
+               </tr>
+               <tr>
+                 <td>PLAYER 4</td>
+                 <td id="p4t2b1"></td>
+                 <td id="p4t2b2"></td>
+                 <td id="p4t2b3"></td>
+                 <td id="p4t2b4"></td>
+                 <td id="p4t2b5"></td>
+                 <td id="p4t2b6"></td>
+                 <td id="p4t2score"></td>
+               </tr>
+               <tr>
+                <td>PLAYER 5</td>
+                 <td id="p5t2b1"></td>
+                 <td id="p5t2b2"></td>
+                 <td id="p5t2b3"></td>
+                 <td id="p5t2b4"></td>
+                 <td id="p5t2b5"></td>
+                 <td id="p5t2b6"></td>
+                 <td id="p5t2score"></td>
+               </tr>
+               <tr>
+                <td>PLAYER 6</td>
+                 <td id="p6t2b1"></td>
+                 <td id="p6t2b2"></td>
+                 <td id="p6t2b3"></td>
+                 <td id="p6t2b4"></td>
+                 <td id="p6t2b5"></td>
+                 <td id="p6t2b6"></td>
+                 <td id="p6t2score"></td>
+               </tr>
+               <tr>
+                <td>PLAYER 7</td>
+                <td id="p7t2b1"></td>
+                <td id="p7t2b2"></td>
+                <td id="p7t2b3"></td>
+                <td id="p7t2b4"></td>
+                <td id="p7t2b5"></td>
+                <td id="p7t2b6"></td>
+                <td id="p7t2score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 8</td>
+                <td id="p8t2b1"></td>
+                 <td id="p8t2b2"></td>
+                 <td id="p8t2b3"></td>
+                 <td id="p8t2b4"></td>
+                 <td id="p8t2b5"></td>
+                 <td id="p8t2b6"></td>
+                 <td id="p8t2score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 9</td>
+                <td id="p9t2b1"></td>
+                 <td id="p9t2b2"></td>
+                 <td id="p9t2b3"></td>
+                 <td id="p9t2b4"></td>
+                 <td id="p9t2b5"></td>
+                 <td id="p9t2b6"></td>
+                 <td id="p9t2score"></td>
+            </tr>
+            <tr>
+                <td>PLAYER 10</td>
+                <td id="p10t2b1"></td>
+                 <td id="p10t2b2"></td>
+                 <td id="p10t2b3"></td>
+                 <td id="p10t2b4"></td>
+                 <td id="p10t2b5"></td>
+                 <td id="p10t2b6"></td>
+                 <td id="p10t2score"></td>
+            </tr>
+           </tbody>
+           </table>
+
+      </div>
+  </div>
+ </div>
+ <script src="script.js"></script>
+
+</body>
+</html>
