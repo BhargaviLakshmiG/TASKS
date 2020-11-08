@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PASSWORD UPDATE</title>
+  </head>
+  <body>
+        <h3 style="text-align: center;">UPDATE PASSWORD</h3>
+        <div class="row">
+            <div class="offset-3 col-6">  
+                
+        <form >
+          <div class="form-group">
+            <label for="randomString">Enter the string  </label>
+           <input type="text" id="str_ran" class="form-control">
+        </div>
+          <div class="form-group">
+             <label for="password">New Password  </label>
+            <input type="password" id="password_new" class="form-control">
+         </div>
+         <div class="form-group">
+            <label for="password_new">Confirm password  </label>
+           <input type="password" id="password_confirm" class="form-control">
+        </div>
+        <div>
+            <input type="button" value="UPDATE" onclick="updatePwd()">
+        </div>
+        </form>
+     </div>
+ </div>
+ <script>
+    async function updatePwd(){
+       var str=document.getElementById("str_ran").value;
+       console.log("In update pwd "+str);
+     try {
+     let match=await fetch("http://localhost:5000/reset/"+str);
+     let string_match=await match.json();
+     console.log(string_match);
+     if(match.status==400)
+     alert("Sorry!!Wrong string.Please enter string given in mail");
+     else{
+       if(document.getElementById("password_new").value!=document.getElementById("password_confirm").value)
+        alert("Enter same password in confirm password field");
+        else{
+          let pwd_new=document.getElementById("password_new").value;
+          let pwdData = {
+            email : string_match,
+            password : pwd_new
+          }
+         let pwd_status= await fetch('http://localhost:5000/updatePwd',{
+            method:"PATCH",
+            body: JSON.stringify(pwdData),
+            headers : {
+               "Content-type" : "application/json"
+           }
+        }) ;
+
+        let pwd_resp=await pwd_status.json();
+        console.log(pwd_resp);
+          alert(pwd_resp.message);
+          document.getElementById("str_ran").value="";
+        document.getElementById("password_new").value="";
+        document.getElementById("password_confirm").value="";
+        }
+     }}
+     catch(error){
+       console.log(error);
+       alert("Error with update password")
+     }
+          
+      }
+ </script>
+  </body>
+
+  </html>
